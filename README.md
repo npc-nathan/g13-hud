@@ -146,3 +146,16 @@ g13 applet check cp2077-hud       # the applet parses and every source it names 
 ```
 
 The first needs `lua5.4`; it skips with a warning if it is missing.
+
+## The three pieces
+
+This mod is one of three repositories that go together:
+
+| repository | what it is |
+|---|---|
+| [logitech-g13-linux-driver](https://github.com/npc-nathan/logitech-g13-linux-driver) | the driver: it reads the pad, sends keys, draws on the 160x43 screen, and configures it from a window - **without this there is nothing for the numbers to appear on** |
+| [logitech-g13-applets](https://github.com/npc-nathan/logitech-g13-applets) | extra screens for the pad; the one that draws this mod's file is [`cp2077-hud`](https://github.com/npc-nathan/logitech-g13-applets/blob/main/applets/cp2077-hud.json) |
+| **[g13-hud](https://github.com/npc-nathan/g13-hud)** | **this one** - Cyberpunk 2077's health, stamina, level, street cred, objective and district, written out for the driver to draw |
+
+The mod writes a file and the applet draws it; neither knows about the other except through that file, so either can
+be replaced without touching the other two.
